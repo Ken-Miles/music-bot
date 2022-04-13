@@ -7,11 +7,11 @@ module.exports = {
     async execute(client, message, args) {
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+        if (!queue || !queue.playing) return message.channel.send(`Music dry af rn${message.author}❌`);
 
         const actualFilter = queue.getFiltersEnabled()[0];
 
-        if (!args[0]) return message.channel.send(`Please specify a valid filter to enable or disable ${message.author}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter} (${client.config.app.px}filter ${actualFilter} to disable it).\n` : ''}`);
+        if (!args[0]) return message.channel.send(`Enter a valid filter dammit ${message.author}❌\n${actualFilter ? `Filter currently active ${actualFilter} (${client.config.app.px}filter ${actualFilter} to disable it).\n` : ''}`);
 
         const filters = [];
 
@@ -20,7 +20,7 @@ module.exports = {
 
         const filter = filters.find((x) => x.toLowerCase() === args[0].toLowerCase());
 
-        if (!filter) return message.channel.send(`This filter doesn't exist ${message.author}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `**${x}**`).join(', ')}.`);
+        if (!filter) return message.channel.send(`This filter doesn't exist (just like your dad) ${message.author} ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `**${x}**`).join(', ')}.`);
 
         const filtersUpdated = {};
 
