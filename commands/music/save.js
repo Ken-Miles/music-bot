@@ -8,6 +8,7 @@ module.exports = {
     async execute({ inter }) {
         const queue = player.getQueue(inter.guildId);
 
+<<<<<<< HEAD
         if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         inter.member.send({
@@ -29,6 +30,14 @@ module.exports = {
             return inter.reply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
         }).catch(error => {
             return inter.reply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
+=======
+        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author} ❌`);
+
+        message.author.send(`You saved the track ${queue.current.title} | ${queue.current.author} from the server ${message.guild.name} ✅`).then(() => {
+            message.channel.send(`Sent title of song to ur dms ✅`);
+        }).catch(error => {
+            message.channel.send(`turn ur dm's on ${message.author} ❌`);
+>>>>>>> 3a593762f6043ab6cedb92dc28c5d1742fff1195
         });
     },
 };
